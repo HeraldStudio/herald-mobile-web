@@ -1,7 +1,7 @@
 /*
  * Class Orientation
  * based on the code from http://www.pjhome.net/web/Orientation.html
- * changed by ray
+ * changed by Ray
  *
  * Usage:
  *   var ori = new Orientation(function(alpha, beta, gamma) {
@@ -9,7 +9,7 @@
  *      // parameters
 
  *      // the alpha axis is perpendicular to the screen and points to the front
- *      // the beta axis is perpendicular to the groud
+ *      // the beta axis is perpendicular to the ground
  *      // the gamma axis is parallel to the screen and points to the right side
  *   
  *   });
