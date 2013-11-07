@@ -40,7 +40,7 @@ function initComponents() {
         $("#password").val(tyxPass);
     }
     if (tyxUser != null && tyxPass != null) {
-        $("#tyxLnk").text("体育系登录（已登录）");
+        $("#tyxLnk .ui-btn-text").text("体育系登录（已登录）");
     }
 
     var idCard = getCookie(COOKIE_ID_CARD);
@@ -49,7 +49,7 @@ function initComponents() {
         $("#idcard").val(idCard);
     }
     if (idCard != null) {
-        $("#idCardLnk").text("一卡通设置（已设置）");
+        $("#idCardLnk .ui-btn-text").text("一卡通设置（已设置）");
     }
 
     
