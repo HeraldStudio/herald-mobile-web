@@ -99,6 +99,21 @@ function getRuntime() {
     });
 }
 
+function getRemainDays() {
+    $.mobile.loading("show");
+    $.get("http://herald.seu.edu.cn/ws/exercise/remain", function(data) {
+        if (!data || !$.isNumeric(data)) {
+            hint("剩余天数获取失败");
+        } else {
+            $("#exercise-remain").text(data);
+        }
+    }).fail(function() {
+        hint("剩余天数获取失败");
+    }).always(function() {
+        $.mobile.loading("hide");
+    });
+}
+
 function getJwcInfo() {
     $.mobile.loading("show");
     $("#jwcTitle").nextAll('li').remove();
