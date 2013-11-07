@@ -40,7 +40,7 @@ function initComponents() {
         $("#password").val(tyxPass);
     }
     if (tyxUser != null && tyxPass != null) {
-        $("#tyxLoginLnk").text("体育系登录（已登录）");
+        $("#tyxLnk").text("体育系登录（已登录）");
     }
 
     var idCard = getCookie(COOKIE_ID_CARD);
@@ -65,10 +65,6 @@ function initComponents() {
         var idCard = $("#idcard").val();
         setCookie(COOKIE_ID_CARD, idCard, 3);
         location.reload();
-    });
-
-    $(document).swipeleft(function() {
-        $("#login-panel").panel("open");
     });
 }
 
