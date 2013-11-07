@@ -91,3 +91,18 @@ function getRuntime() {
         }
     });
 }
+
+function getJwcInfo() {
+    $("#jwcTitle").nextAll('li').remove();
+    $.get("http://herald.seu.edu.cn/ws/campus/jwc", function(data) {
+        var info = $.parseJSON(data).info;
+        $("#jwcCount").text(info.length || 0);
+        for (var e in info) {
+            var title = e.title;
+            var href = e.href;
+            var time = "";
+            $("#infoList li:last-child").after(
+                "<li><a href=\"" + href + "\"><p><strong>" + time + "</strong></p><h2 style="">" + title + "</h3></a></li>");
+        }
+    });
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/gravity-api.js"></script>
+</head>
+<body>
+<p id="a"></p>
+<p id="b"></p>
+<p id="r"></p>
+<script>
+var ori = new Orientation(function(a,b,r) {
+    document.getElementById("a").innerHTML = a;
+    document.getElementById("b").innerHTML = b;
+    document.getElementById("r").innerHTML = r;
+});
+ori.init();
+</script>
+</body>
+</html>

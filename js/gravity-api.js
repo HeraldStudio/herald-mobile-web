@@ -5,14 +5,10 @@
  *
  * Usage:
  *   var ori = new Orientation(function(alpha, beta, gamma) {
- *      // the callback function which deals with the gravity variation
- *      // parameters
-
- *      // the alpha axis is perpendicular to the screen and points to the front
- *      // the beta axis is perpendicular to the ground
- *      // the gamma axis is parallel to the screen and points to the right side
+ *      // instruction: http://dev.opera.com/articles/view/w3c-device-orientation-api/
  *   
  *   });
+ *   ori.init();
  */
 function Orientation(handler) {
     this.handler = handler;
@@ -38,8 +34,13 @@ function Orientation(handler) {
     }
 }
 
-Orientation.prototype.init = function(){
+Orientation.prototype.init = function() {
+    if(!window.DeviceOrientationEvent) {
+        console.warn("The device doesn't support binding a 'device orientation' event.");
+        return;
+    }
     window.addEventListener('deviceorientation', this.orientationListener, false);
     window.addEventListener('MozOrientation', this.orientationListener, false);
     window.addEventListener('devicemotion', this.orientationListener, false);
+    console.log("Orientation is initialized.");
 }

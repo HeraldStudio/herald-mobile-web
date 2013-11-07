@@ -55,28 +55,8 @@
     </div><!-- /panel -->
 
     <div data-role="content" class="herald-content">
-        <ul data-role="listview" data-inset="true">
-            <li data-role="list-divider">2014年11月4日<span class="ui-li-count">2</span></li>
-            <li><a href="index.html">
-                <h2>关于2013-2014-2学期军事理论期末考试安排的通知</h2>
-                <p>各位同学：2013-2014-2学期军事理论期末考试定于11月15日（周五）晚18：30-20：00进行，请登录学生在线服务系统
-                （http://xk.urp.seu.edu.cn/studentService/system/showLogin.action），进入“考务服务”，点击“考试安排”查询考场。
-                重修学生考场为教六-104。</p>
-                <p class="ui-li-aside"><strong>6:24</strong>PM</p>
-            </a></li>
-            <li><a href="index.html">
-                <h2>关于寒假打倒XXX的通知</h2>
-                <p><strong>Boston Conference Planning</strong></p>
-                <p>In preparation for the upcoming conference in Boston, we need to start gathering a list of sponsors and speakers.</p>
-                <p class="ui-li-aside"><strong>9:18</strong>AM</p>
-            </a></li>
-            <li data-role="list-divider">2014年11月5日<span class="ui-li-count">1</span></li>
-            <li><a href="index.html">
-                <h2>Avery Walker</h2>
-                <p><strong>Re: Dinner Tonight</strong></p>
-                <p>Sure, let's plan on meeting at Highland Kitchen at 8:00 tonight. Can't wait! </p>
-                <p class="ui-li-aside"><strong>4:48</strong>PM</p>
-            </a></li>
+        <ul data-role="listview" data-inset="true" id="infoList">
+            <li id="jwcTitle" data-role="list-divider">教务信息<span class="ui-li-count" id="jwcCount">2</span></li>
         </ul>
     </div><!-- /content -->
     
@@ -99,6 +79,7 @@
 
 $(document).ready(function() {
     initComponents();
+    getJwcInfo();
 });
 
 </script>

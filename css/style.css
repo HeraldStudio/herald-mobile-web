@@ -18,6 +18,10 @@
     text-align: center;
 }
 
+.herald-content ul > li h2 {
+    white-space: normal;
+}
+
 .copyright {
     margin-top: 35px;
     font-size: 10px;
