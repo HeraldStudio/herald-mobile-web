@@ -62,3 +62,7 @@
     font-size: 20px;
     color: black;
 }
+
+#hintLnk {
+    display: none;
+}

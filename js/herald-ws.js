@@ -60,6 +60,11 @@ function initComponents() {
     });
 }
 
+function hint(msg) {
+    $("#hintInfo").text(msg);
+    $("#hintLnk").trigger("click");
+}
+
 function getRuntime() {
     var tyxUser = getCookie(COOKIE_TYX_USER);
     var tyxPass = getCookie(COOKIE_TYX_PASS);
@@ -70,13 +75,13 @@ function getRuntime() {
     $.mobile.loading("show");
     $.get("http://herald.seu.edu.cn/herald_web_service/tyx/" + tyxUser + "/" + tyxPass + "/",
     function(data) {
-        if (data == "Server Error") {
-            $("#hintTyxErrorLnk").click();
+        if (!$.isNumeric(data)) {
+            hint(data);
         } else {
             $("#timesData").text(data);
         }
     }).fail(function() {
-        ;
+        hint("跑操次数获取失败");
     }).always(function() {
         $.mobile.loading("hide");
     });
@@ -97,7 +102,7 @@ function getJwcInfo() {
                 "<li><a href=\"" + href + "\"><p><strong>" + time + "</strong></p><h2>" + title + "</h3></a></li>");
         }
     }).fail(function() {
-        ;
+        hint("教务处信息获取失败");
     }).always(function() {
         $.mobile.loading("hide");
     });

@@ -55,8 +55,12 @@
         <h2>您的跑操次数/要求次数</h2>
         <p class="center"><span id="exercise-times"><span id="timesData">?</span>/45</span>次</p>
         <p>本学期大约还可以跑<span id="exercise-remain">?</span>次</p>
-        <a id="tyxHintLnk" href="#tyxHint" data-rel="popup" data-transition="pop" data-position-to="window" style="display:none"></a>
     </div><!-- /content -->
+
+    <a id="hintLnk" href="#hint" data-role="button" data-inline="true" data-rel="popup" data-position-to="window">Position to window</a>
+    <div data-role="popup" id="hint" class="ui-content" data-theme="c">
+        <p id="hintInfo"></p>
+    </div>
     
     <div data-role="footer" data-id="foo1" data-position="fixed">
         <div data-role="navbar">
