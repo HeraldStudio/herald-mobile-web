@@ -58,6 +58,10 @@ function initComponents() {
         setCookie(COOKIE_ID_CARD, idCard, 3);
         location.reload();
     });
+
+    $(document).swipeleft(function() {
+        $("#login-panel").panel("open");
+    });
 }
 
 function hint(msg) {
