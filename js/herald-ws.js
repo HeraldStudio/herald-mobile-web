@@ -67,28 +67,38 @@ function getRuntime() {
         $("#tyxLnk").trigger("click");
         return;
     }
+    $.mobile.loading("show");
     $.get("http://herald.seu.edu.cn/herald_web_service/tyx/" + tyxUser + "/" + tyxPass + "/",
     function(data) {
         if (data == "Server Error") {
             $("#hintTyxErrorLnk").click();
         } else {
             $("#timesData").text(data);
-            drawChart(data, 45);
         }
+    }).fail(function() {
+        ;
+    }).always(function() {
+        $.mobile.loading("hide");
     });
 }
 
 function getJwcInfo() {
+    $.mobile.loading("show");
     $("#jwcTitle").nextAll('li').remove();
     $.get("http://herald.seu.edu.cn/ws/campus/jwc", function(data) {
-        var info = $.parseJSON(data).info;
+        var info = data.info;
         $("#jwcCount").text(info.length || 0);
-        for (var e in info) {
+        for (var i = 0; i < info.length; ++i) {
+            var e = info[i];
             var title = e.title;
             var href = e.href;
             var time = "";
             $("#infoList li:last-child").after(
                 "<li><a href=\"" + href + "\"><p><strong>" + time + "</strong></p><h2>" + title + "</h3></a></li>");
         }
+    }).fail(function() {
+        ;
+    }).always(function() {
+        $.mobile.loading("hide");
     });
 }
