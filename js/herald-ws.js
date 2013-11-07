@@ -28,20 +28,6 @@ function getCookie(c_name) {
     return c_value;
 }
 
-function drawChart(curr, stand) {
-    var doughnutData = [
-        {
-            value : curr,
-            color : "#F7464A"
-        },
-        {
-            value : stand - curr,
-            color : "#949FB1"
-        }
-    ];
-    var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);
-}
-
 function initComponents() {
     var tyxUser = getCookie(COOKIE_TYX_USER);
     if (tyxUser != null) {
