@@ -39,11 +39,19 @@ function initComponents() {
         setCookie(COOKIE_TYX_PASS, tyxPass, 3);
         $("#password").val(tyxPass);
     }
+    if (tyxUser != null && tyxPass != null) {
+        $("#tyxLoginLnk").text("体育系登录（已登录）");
+    }
+
     var idCard = getCookie(COOKIE_ID_CARD);
     if (idCard != null) {
         setCookie(COOKIE_ID_CARD, idCard, 3);
         $("#idcard").val(idCard);
     }
+    if (idCard != null) {
+        $("#idCardLnk").text("一卡通设置（已设置）");
+    }
+
     
     $("#saveTyx").click(function() {
         var username = $("#username").val();
