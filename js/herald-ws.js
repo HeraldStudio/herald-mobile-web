@@ -101,6 +101,7 @@ function getJwcInfo() {
             $("#infoList li:last-child").after(
                 "<li><a href=\"" + href + "\"><p><strong>" + time + "</strong></p><h2>" + title + "</h3></a></li>");
         }
+        $("#infoList").listview("refresh");
     }).fail(function() {
         hint("教务处信息获取失败");
     }).always(function() {
