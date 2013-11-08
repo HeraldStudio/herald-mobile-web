@@ -31,6 +31,10 @@ function getCookie(c_name) {
     return c_value;
 }
 
+function deleteCookie(c_name) {
+    document.cookie = c_name + "=; Max-Age=0";
+}
+
 function initComponents() {
     var tyxUser = getCookie(COOKIE_TYX_USER);
     if (tyxUser != null) {
@@ -67,6 +71,7 @@ function initComponents() {
     $("#saveIdCard").click(function() {
         var idCard = $("#idcard").val();
         setCookie(COOKIE_ID_CARD, idCard, 3);
+        deleteCookie(COOKIE_CURRICULUM);
         location.reload();
     });
 }
