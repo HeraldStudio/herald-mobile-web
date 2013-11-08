@@ -33,6 +33,11 @@
     text-decoration: none;
 }
 
+.strategy {
+    margin-left: 3px;
+    color: #777;
+}
+
 .center {
     text-align: center;
 }

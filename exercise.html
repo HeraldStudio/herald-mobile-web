@@ -13,11 +13,13 @@
 
 <div data-role="page" class="herald-page">
 
+    <!-- 标题栏 -->
     <div data-role="header" data-position="fixed" class="herald-header">
         <h1>跑操查询</h1>
         <a href="#" data-role="button" data-icon="star" data-iconpos="notext" data-theme="c">收藏</a>
     </div>
     
+    <!-- 右栏：登录设置 -->
     <div data-role="panel" id="login-panel" data-position="right" data-display="reveal">
         <a id="tyxLnk" href="#tyxPopup" data-rel="popup" data-position-to="window" data-role="button" data-icon="check" data-theme="c" data-transition="pop">体育系登录</a>
         <div data-role="popup" id="tyxPopup" data-theme="c" class="ui-corner-all">
@@ -50,6 +52,7 @@
         </div>
     </div><!-- /panel -->
 
+    <!-- 跑操查询内容 -->
     <div data-role="content" class="herald-content" id="exercise-info">
         <a id="exerciseQuery" data-role="button">查询</a>
         <h2>您的跑操次数/要求次数</h2>
@@ -57,11 +60,13 @@
         <p>本学期大约还可以跑<span id="exercise-remain">?</span>次</p>
     </div><!-- /content -->
 
+    <!-- 提示组件 -->
     <a id="hintLnk" href="#hint" data-role="button" data-inline="true" data-rel="popup" data-position-to="window">Position to window</a>
     <div data-role="popup" id="hint" class="ui-content" data-theme="c">
         <p id="hintInfo"></p>
     </div>
     
+    <!-- 底部选项 -->
     <div data-role="footer" data-id="foo1" data-position="fixed">
         <div data-role="navbar">
             <ul>

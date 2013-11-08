@@ -13,11 +13,13 @@
 
 <div data-role="page" class="herald-page">
 
+    <!-- 标题栏 -->
     <div data-role="header" data-position="fixed" class="herald-header">
         <h1>课表查询</h1>
         <a href="#" data-role="button" data-icon="star" data-iconpos="notext" data-theme="c">收藏</a>
     </div>
     
+    <!-- 右栏：登录设置 -->
     <div data-role="panel" id="login-panel" data-position="right" data-display="reveal">
         <a id="tyxLnk" href="#tyxPopup" data-rel="popup" data-position-to="window" data-role="button" data-icon="check" data-theme="c" data-transition="pop">体育系登录</a>
         <div data-role="popup" id="tyxPopup" data-theme="c" class="ui-corner-all">
@@ -50,10 +52,11 @@
         </div>
     </div><!-- /panel -->
 
+    <!-- 课表查询内容 -->
     <div data-role="content" class="herald-content">
         <form>
             <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                <input type="radio" name="day" id="mon" value="mon" checked="checked">
+                <input type="radio" name="day" id="mon" value="mon">
                 <label for="mon">一</label>
                 <input type="radio" name="day" id="tue" value="tue">
                 <label for="tue">二</label>
@@ -69,32 +72,17 @@
                 <label for="sun">日</label>
             </fieldset>
         </form>
-        <ul data-role="listview" data-inset="true">
-            <li><a href="#">
-                <p>1-2节</p>
-                <h2>下课</h2>
-                <p>梅4B-214</p></a>
-            </li>
-            <li><a href="#">
-                <p>3-4节</p>
-                <h2>下课</h2>
-                <p>梅4B-214</p></a>
-            </li>
-            <li>
-            </li>
-            <li><a href="#">
-                <p>6-7节</p>
-                <h2>下课</h2>
-                <p>梅4B-214</p></a>
-            </li>
+        <ul id="curriculum" data-role="listview" data-inset="true">
         </ul>
     </div><!-- /content -->
 
+    <!-- 提示组件 -->
     <a id="hintLnk" href="#hint" data-role="button" data-inline="true" data-rel="popup" data-position-to="window">Position to window</a>
     <div data-role="popup" id="hint" class="ui-content" data-theme="c">
         <p id="hintInfo"></p>
     </div>
     
+    <!-- 底部选项 -->
     <div data-role="footer" data-id="foo1" data-position="fixed">
         <div data-role="navbar">
             <ul>
@@ -114,6 +102,20 @@
 
 $(document).ready(function() {
     initComponents();
+    var dayIndexMap = {
+        "#mon" : 0,
+        "#tue" : 1,
+        "#wed" : 2,
+        "#thu" : 3,
+        "#fri" : 4,
+        "#sat" : 5,
+        "#sun" : 6
+    };
+    $.each(dayIndexMap, function(key, value) {
+        $(key).click(function() {
+            getCurriculum(value);
+        });
+    });
 });
 
 </script>

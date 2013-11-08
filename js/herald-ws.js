@@ -1,6 +1,9 @@
+WS_BASE_URL = "http://herald.seu.edu.cn/ws";
+
 COOKIE_TYX_USER = "tyx_user";
 COOKIE_TYX_PASS = "tyx_pass";
 COOKIE_ID_CARD = "id_card";
+COOKIE_CURRICULUM = "curriculum";
 
 function setCookie(c_name, value, exdays) {
     var exdate = new Date();
@@ -97,7 +100,7 @@ function getRuntime() {
 
 function getRemainDays() {
     $.mobile.loading("show");
-    $.get("http://herald.seu.edu.cn/ws/exercise/remain", function(data) {
+    $.get(WS_BASE_URL + "/exercise/remain", function(data) {
         if (!data || !$.isNumeric(data)) {
             hint("剩余天数获取失败");
         } else {
@@ -113,7 +116,7 @@ function getRemainDays() {
 function getJwcInfo() {
     $.mobile.loading("show");
     $("#jwcTitle").nextAll('li').remove();
-    $.get("http://herald.seu.edu.cn/ws/campus/jwc", function(data) {
+    $.get(WS_BASE_URL + "/campus/jwc", function(data) {
         var info = data.info;
         $("#jwcCount").text(info.length || 0);
         for (var i = 0; i < info.length; ++i) {
@@ -127,6 +130,60 @@ function getJwcInfo() {
         $("#infoList").listview("refresh");
     }).fail(function() {
         hint("教务处信息获取失败");
+    }).always(function() {
+        $.mobile.loading("hide");
+    });
+}
+
+function getCurriculum(index) {
+    var idCard = getCookie(COOKIE_ID_CARD);
+    if (idCard == null) {
+        $("#idCardLnk").trigger("click");
+        return;
+    }
+
+    $.mobile.loading("show");
+    var renderCurriculum = function(data, index) {
+        $("#curriculum").empty();
+        var each = data[index];
+        if (each == null || data[index].courses.length == 0) {
+            var appendHtml = "<li><h2>没课你敢信？</h2></li>"
+            $("#curriculum").append(appendHtml);
+            $("#curriculum").listview("refresh");
+            return;
+        }
+        var courses = data[index].courses;
+        var size = courses.length;
+        for (var i = 0; i < size; ++i) {
+            var course = courses[i];
+            var name = course.name;
+            var time = course.time;
+            var location = course.location;
+            var strategy = course.strategy;
+            var strategyHtml = "";
+            if (strategy == "ODD") {
+                strategyHtml = "<span class=\"strategy\">(单周)</span>";
+            } else if (strategy == "EVEN") {
+                strategyHtml = "<span class=\"strategy\">(双周)</span>";
+            }
+            var appendHtml = "<li><a href=\"#\"><p>" + time +
+                "</p><h2>" + name + strategyHtml +
+                "</h2><p>" + location + "</p></a></li>";
+            $("#curriculum").append(appendHtml);
+        }
+        $("#curriculum").listview("refresh");
+    }
+    var curriculum = getCookie(COOKIE_CURRICULUM);
+    if (curriculum != null) {
+        renderCurriculum($.parseJSON(curriculum), index);
+        $.mobile.loading("hide");
+        return;
+    }
+    $.get(WS_BASE_URL + "/curriculum/" + idCard + "?term=12-13-2", function(data) {
+        setCookie(COOKIE_CURRICULUM, JSON.stringify(data));
+        renderCurriculum(data, index);
+    }).fail(function() {
+        hint("课表查询失败");
     }).always(function() {
         $.mobile.loading("hide");
     });
