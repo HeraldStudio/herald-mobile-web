@@ -179,8 +179,8 @@ function getCurriculum(index) {
         $.mobile.loading("hide");
         return;
     }
-    $.get(WS_BASE_URL + "/curriculum/" + idCard + "?term=12-13-2", function(data) {
-        setCookie(COOKIE_CURRICULUM, JSON.stringify(data));
+    $.get(WS_BASE_URL + "/curriculum/" + idCard, function(data) {
+        setCookie(COOKIE_CURRICULUM, JSON.stringify(data), 1);
         renderCurriculum(data, index);
     }).fail(function() {
         hint("课表查询失败");
