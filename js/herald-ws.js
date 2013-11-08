@@ -99,17 +99,10 @@ function getRuntime() {
 }
 
 function getRemainDays() {
-    $.mobile.loading("show");
     $.get(WS_BASE_URL + "/exercise/remain", function(data) {
-        if (!data || !$.isNumeric(data)) {
-            hint("剩余天数获取失败");
-        } else {
+        if (data && $.isNumeric(data)) {
             $("#exercise-remain").text(data);
         }
-    }).fail(function() {
-        hint("剩余天数获取失败");
-    }).always(function() {
-        $.mobile.loading("hide");
     });
 }
 
