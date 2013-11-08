@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html manifest="./cache.manifest">
 <head>
     <title>教务信息</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Cache-Control" content="max-age=3600">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="先声">
+    <link rel="apple-touch-icon-precomposed" href="./images/herald-icon-small.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./images/herald-icon-large.png">
+    <!--
+    <link rel="apple-touch-startup-image" sizes="1024x748" href="startup-1024x748.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+    <link rel="apple-touch-startup-image" sizes="768x1004" href="startup-768x1004.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+    <link rel="apple-touch-startup-image" sizes="640x920" href="startup-640x920.png" media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" sizes="320x460" href="startup-320x460.png" media="screen and (max-device-width: 320)">
+    -->
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./jquery.mobile-1.3.2.min.css" />
-    <link rel="apple-touch-icon-precomposed" href="./images/herald-icon-small.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./images/herald-icon-large.png"/>
     <script src="./jquery-1.8.2.min.js"></script>
     <script src="./jquery.mobile-1.3.2.min.js"></script>
 </head>
@@ -63,7 +71,7 @@
     </div><!-- /content -->
 
     <!-- 提示组件 -->
-    <a id="hintLnk" href="#hint" data-role="button" data-inline="true" data-rel="popup" data-position-to="window">Position to window</a>
+    <a id="hintLnk" href="#hint" data-role="button" data-inline="true" data-rel="popup" data-position-to="window"></a>
     <div data-role="popup" id="hint" class="ui-content" data-theme="c">
         <p id="hintInfo"></p>
     </div>
@@ -72,9 +80,9 @@
     <div data-role="footer" data-id="foo1" data-position="fixed">
         <div data-role="navbar">
             <ul>
-                <li><a data-iconpos="top" data-icon="info" rel="external" data-ajax="false" href="./jwc.html">教务信息</a></li>
-                <li><a data-iconpos="top" data-icon="search" rel="external" data-ajax="false" href="./exercise.html">跑操查询</a></li>
-                <li><a data-iconpos="top" data-icon="grid" rel="external" data-ajax="false" href="./curriculum.html">课表查询</a></li>
+                <li><a class="app-inner" data-iconpos="top" data-icon="info" href="./jwc.html">教务信息</a></li>
+                <li><a class="app-inner" data-iconpos="top" data-icon="search" href="./exercise.html">跑操查询</a></li>
+                <li><a class="app-inner" data-iconpos="top" data-icon="grid" href="./curriculum.html">课表查询</a></li>
                 <li><a data-iconpos="top" data-icon="gear" href="#login-panel">设置</a></li>
             </ul>
         </div><!-- /navbar -->
