@@ -85,7 +85,7 @@ function getRuntime() {
     var tyxUser = getCookie(COOKIE_TYX_USER);
     var tyxPass = getCookie(COOKIE_TYX_PASS);
     if (tyxUser == null || tyxPass == null) {
-        $("#tyxLnk").trigger("click");
+        hint("请在“设置”中登录你的体育系账户");
         return;
     }
     $.mobile.loading("show");
@@ -136,7 +136,7 @@ function getJwcInfo() {
 function getCurriculum(index) {
     var idCard = getCookie(COOKIE_ID_CARD);
     if (idCard == null) {
-        $("#idCardLnk").trigger("click");
+        hint("请在“设置”中设置你的一卡通");
         return;
     }
 
