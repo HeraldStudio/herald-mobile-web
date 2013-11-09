@@ -83,16 +83,16 @@
     <div data-role="footer" data-id="foo1" data-position="fixed">
         <div data-role="navbar">
             <ul>
-                <li><a class="app-inner" data-iconpos="top" data-icon="info" href="./jwc.html">教务信息</a></li>
-                <li><a class="app-inner" data-iconpos="top" data-icon="search" href="./exercise.html">跑操查询</a></li>
-                <li><a class="app-inner" data-iconpos="top" data-icon="grid" href="./curriculum.html">课表查询</a></li>
+                <li><a class="app-inner" data-ajax="false" data-iconpos="top" data-icon="info" href="./jwc.html">教务信息</a></li>
+                <li><a class="app-inner" data-ajax="false" data-iconpos="top" data-icon="search" href="./exercise.html">跑操查询</a></li>
+                <li><a class="app-inner" data-ajax="false" data-iconpos="top" data-icon="grid" href="./curriculum.html">课表查询</a></li>
                 <li><a data-iconpos="top" data-icon="gear" href="#login-panel">设置</a></li>
             </ul>
         </div><!-- /navbar -->
     </div><!-- /footer -->
 
     <script type="text/javascript">
-        $("#jwcPage").on("pagecreate", function() {
+        $("#jwcPage").on("pageshow", function() {
             initComponents();
             getJwcInfo();
         });

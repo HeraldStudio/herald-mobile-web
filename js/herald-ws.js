@@ -74,6 +74,12 @@ function initComponents() {
         deleteCookie(COOKIE_CURRICULUM);
         location.reload();
     });
+    
+    $("a.app-inner").on("click", function(event) {
+        event.preventDefault();
+        var href = $(this).attr("href");
+        window.location = href;
+    });
 }
 
 function hint(msg) {
@@ -85,7 +91,7 @@ function getRuntime() {
     var tyxUser = getCookie(COOKIE_TYX_USER);
     var tyxPass = getCookie(COOKIE_TYX_PASS);
     if (tyxUser == null || tyxPass == null) {
-        hint("请在“设置”中登录你的体育系账户");
+        $("#tyxPopup").popup("open");
         return;
     }
     $.mobile.loading("show");
@@ -136,7 +142,7 @@ function getJwcInfo() {
 function getCurriculum(index) {
     var idCard = getCookie(COOKIE_ID_CARD);
     if (idCard == null) {
-        hint("请在“设置”中设置你的一卡通");
+        $("#idCardPopup").popup("open");
         return;
     }
 
