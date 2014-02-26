@@ -26,11 +26,11 @@
 </head>
 <body>
 
-<div id="exercisePage" data-role="page" class="herald-page">
+<div id="curriculumPage" data-role="page" class="herald-page">
 
     <!-- 标题栏 -->
     <div data-role="header" data-position="fixed" class="herald-header">
-        <h1>跑操查询</h1>
+        <h1>课表查询</h1>
     </div>
     
     <!-- 右栏：登录设置 -->
@@ -66,14 +66,30 @@
         </div>
     </div><!-- /panel -->
 
-    <!-- 跑操查询内容 -->
-    <div data-role="content" class="herald-content" id="exercise-info">
-        <a id="exerciseQuery" data-role="button">查询</a>
-        <h2>您的跑操次数/要求次数</h2>
-        <p class="center"><span id="exercise-times"><span id="timesData">?</span>/45</span>次</p>
-        <p>本学期大约还可以跑<span id="exercise-remain">?</span>次</p>
+    <!-- 课表查询内容 -->
+    <div data-role="content" class="herald-content">
+        <form>
+            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                <input type="radio" name="day" id="mon" value="mon">
+                <label for="mon">一</label>
+                <input type="radio" name="day" id="tue" value="tue">
+                <label for="tue">二</label>
+                <input type="radio" name="day" id="wed" value="wed">
+                <label for="wed">三</label>
+                <input type="radio" name="day" id="thu" value="thu">
+                <label for="thu">四</label>
+                <input type="radio" name="day" id="fri" value="fri">
+                <label for="fri">五</label>
+                <input type="radio" name="day" id="sat" value="sat">
+                <label for="sat">六</label>
+                <input type="radio" name="day" id="sun" value="sun">
+                <label for="sun">日</label>
+            </fieldset>
+        </form>
+        <ul id="curriculum" data-role="listview" data-inset="true">
+        </ul>
     </div><!-- /content -->
-    
+
     <!-- 提示组件 -->
     <a id="hintLnk" href="#hint" data-role="button" data-inline="true" data-rel="popup" data-position-to="window"></a>
     <div data-role="popup" id="hint" class="ui-content" data-theme="c">
@@ -94,17 +110,31 @@
 
 </div><!-- /page -->
 
-<script src="./jquery-1.10.2.min.js"></script>
+<script src="./jquery-1.10.2.js"></script>
 <script src="./jquery.mobile-1.3.2.min.js"></script>
 <script src="./js/herald-ws.js"></script>
 <script src="./js/add2home.js"></script>
-    
+
 <script type="text/javascript">
-$("#exercisePage").on("pageshow", function() {
+$("#curriculumPage").on("pageshow", function() {
     initComponents();
-    $("#exerciseQuery").click(function() {
-        getRuntime();
-        getRemainDays();
+    var dayIndexMap = {
+        "#mon" : 0,
+        "#tue" : 1,
+        "#wed" : 2,
+        "#thu" : 3,
+        "#fri" : 4,
+        "#sat" : 5,
+        "#sun" : 6
+    };
+    $.each(dayIndexMap, function(key, value) {
+        var e = $(key);
+        if (e.length <= 0) {
+            return;
+        }
+        $(key).click(function() {
+            getCurriculum(value);
+        });
     });
 });
 </script>
