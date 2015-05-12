@@ -38,28 +38,30 @@
     
     <!-- 右栏：登录设置 -->
     <div data-role="panel" id="login-panel" data-position="right" data-display="reveal">
-        <a id="tyxLnk" href="#tyxPopup" data-rel="popup" data-position-to="window" data-role="button" data-icon="check" data-theme="c" data-transition="pop">体育系登录</a>
+        <a id="tyxLnk" href="#tyxPopup" data-rel="popup" data-position-to="window" data-role="button" data-icon="check" data-theme="c" data-transition="pop">信息设置</a>
         <div data-role="popup" id="tyxPopup" data-theme="c" class="ui-corner-all">
             <form>
                 <div style="padding:10px 20px;">
-                    <h3>体育系登录</h3>
-                    <label for="un" class="ui-hidden-accessible">体育系用户名:</label>
-                    <input type="text" name="username" id="username" value="" placeholder="体育系用户名" data-theme="c">
+                    <h3>信息设置</h3>
+                    <label for="un" class="ui-hidden-accessible">学号:</label>
+                    <input type="text" name="username" id="username" value="" placeholder="学号" data-theme="c">
                     <label for="pw" class="ui-hidden-accessible">体育系密码:</label>
                     <input type="password" name="password" id="password" value="" placeholder="体育系密码" data-theme="c">
-                    <a id="saveTyx" data-role="button" data-theme="c" data-icon="check">登录</a>
+                    <a id="saveInfo" data-role="button" data-theme="c" data-icon="check">设置</a>
                 </div>
             </form>
         </div>
     
-        <a id="idCardLnk" href="#idCardPopup" data-rel="popup" data-position-to="window" data-role="button" data-icon="check" data-theme="c" data-transition="pop">一卡通设置</a>
+        <a id="idCardLnk" href="#idCardPopup" data-rel="popup" data-position-to="window" data-role="button" data-icon="check" data-theme="c" data-transition="pop">一卡通登陆</a>
         <div data-role="popup" id="idCardPopup" data-theme="c" class="ui-corner-all">
             <form>
                 <div style="padding:10px 20px;">
-                    <h3>一卡通设置</h3>
+                    <h3>一卡通登陆</h3>
                     <label for="un" class="ui-hidden-accessible">一卡通号:</label>
                     <input type="text" name="idcard" id="idcard" value="" placeholder="一卡通号" data-theme="c">
-                    <a id="saveIdCard" data-role="button" data-theme="c" data-icon="check">保存</a>
+                    <label for="pw" class="ui-hidden-accessible">一卡通密码:</label>
+                    <input type="password" name="cardpass" id="cardpass" value="" placeholder="一卡通密码" data-theme="c">
+                    <a id="saveIdCard" data-role="button" data-theme="c" data-icon="check">登录</a>
                 </div>
             </form>
         </div>
@@ -103,17 +105,6 @@
 </div><!-- /page -->
 
 <script src="./js/add2home.js"></script>
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-45627314-1', 'seu.edu.cn');
-  ga('send', 'pageview');
-
-</script>
 
 </body>
 </html>
